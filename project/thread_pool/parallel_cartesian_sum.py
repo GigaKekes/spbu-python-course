@@ -2,6 +2,7 @@ from typing import List, Set
 from concurrent.futures import ProcessPoolExecutor
 from itertools import product
 
+
 def parallel_cartesian_sum(sets: List[Set[int]]) -> int:
     """
     Computes the sum of the Cartesian product of multiple sets of integers in parallel.
@@ -11,16 +12,14 @@ def parallel_cartesian_sum(sets: List[Set[int]]) -> int:
 
     Returns:
         int: The sum of all elements in the Cartesian product of the input sets.
-    
+
     Raises:
         ValueError: When provided a set of zero length
     """
     if not all([len(set) != 0 for set in sets]):
         raise ValueError("You should provide sets of non-zero length")
-    
+
     with ProcessPoolExecutor() as executor:
         cartesian_product = list(product(*sets))
         partial_sums = executor.map(sum, cartesian_product)
     return sum(partial_sums)
-
-

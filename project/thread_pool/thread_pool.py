@@ -115,12 +115,9 @@ class ThreadPool:
         """
         if self.is_active == False:
             return
-        
+
         self.task_event.set()
         self.is_active = False
 
         for thread in self.threads:
             thread.join()
-
-
-

@@ -19,7 +19,6 @@ def test_num_threads():
     pool.dispose()
 
 
-
 def test_thread_disposal():
     num_threads = 2
     pool = ThreadPool(num_threads)
@@ -71,4 +70,3 @@ def test_enqueue_tasks():
         len(completed_tasks) == n
     ), f"Expected {n} tasks completed, got {len(completed_tasks)}"
     assert all(f"Task {i} completed" in completed_tasks for i in range(n))
-
