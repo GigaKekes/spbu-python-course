@@ -1,7 +1,8 @@
 import pytest
 import time
+import threading
 from queue import Queue
-from project.thread_pool.thread_pool import ThreadPool, parallel_cartesian_sum
+from project.thread_pool.thread_pool import ThreadPool
 
 
 def simple_task(results, task_num, delay=0.25):
@@ -13,9 +14,10 @@ def test_num_threads():
     num_threads = 4
     pool = ThreadPool(num_threads)
     assert (
-        len(pool.threads) == num_threads
-    ), f"Expected {num_threads} threads, found {len(pool.threads)}"
+        threading.active_count() == num_threads + 1
+    ), f"Expected {num_threads + 1} active threads, found {threading.active_count()}"
     pool.dispose()
+
 
 
 def test_thread_disposal():
@@ -70,10 +72,3 @@ def test_enqueue_tasks():
     ), f"Expected {n} tasks completed, got {len(completed_tasks)}"
     assert all(f"Task {i} completed" in completed_tasks for i in range(n))
 
-
-@pytest.mark.parametrize(
-    "expected_sum, list_of_sets",
-    [(33, [{22}, {11}]), (20, [{1, 2}, {3, 4}]), (84, [{1, 2}, {3, 4}, {5, 6}])],
-)
-def test_parallel_cartesian_sum(expected_sum, list_of_sets):
-    assert expected_sum == parallel_cartesian_sum(list_of_sets)

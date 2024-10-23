@@ -1,5 +1,4 @@
-from threading import Thread
-from queue import Queue
+from threading import Thread, Lock, Event
 from typing import List, Callable, Set
 from concurrent.futures import ThreadPoolExecutor
 from itertools import product
@@ -12,12 +11,19 @@ class ThreadPool:
     Attributes:
         num_threads : int
             The number of worker threads in the pool.
-        tasks : Queue
-            A queue that holds tasks (functions) to be executed by the worker threads.
+        tasks : List
+            A list that holds tasks (functions) to be executed by the worker threads.
         threads : List[Thread]
             A list of the threads in the pool.
         is_active : bool
             A flag indicating if the thread pool is active and can accept new tasks.
+        task_event : threading.Event
+            An event used to signal when new tasks are available for worker threads to process.
+            The event is set whenever a new task is enqueued and cleared when there are no tasks to process.
+
+        lock : threading.Lock
+            A lock to ensure thread-safe access to the task list, preventing race conditions
+            when tasks are being added, removed, or accessed by worker threads.
 
     Methods:
         __init__(num_threads: int) -> None:
@@ -44,9 +50,12 @@ class ThreadPool:
         """
 
         self.num_threads: int = num_threads
-        self.tasks: Queue[Callable | None] = Queue()
+        self.tasks: List[Callable | None] = []
         self.threads: List[Thread] = []
         self.is_active: bool = True
+        self.lock: Lock = Lock()
+        self.task_event: Event = Event()
+
         for _ in range(num_threads):
             thread = Thread(target=self.worker)
             thread.start()
@@ -60,14 +69,21 @@ class ThreadPool:
         the thread pool is disposed and the shutdown signal (None) is received.
         """
 
-        while self.is_active:
-            task = self.tasks.get()
-            if task is None:
-                break
-            try:
-                task()
-            finally:
-                self.tasks.task_done()
+        while self.is_active or self.tasks:
+            with self.lock:
+                if self.tasks:
+                    task = self.tasks.pop(0)
+                else:
+                    task = None
+
+            if task:
+                try:
+                    task()
+                finally:
+                    self.task_event.clear()
+            else:
+                if self.is_active:
+                    self.task_event.wait()
 
     def enqueue(self, task: Callable) -> None:
         """
@@ -87,32 +103,24 @@ class ThreadPool:
         if not self.is_active:
             raise RuntimeError("ThreadPool is inactive. Cannot enqueue new tasks.")
 
-        self.tasks.put(task)
+        with self.lock:
+            self.tasks.append(task)
+
+        self.task_event.set()
 
     def dispose(self) -> None:
         """
         Disposes of the thread pool by signaling all worker threads to finish their tasks and terminate.
         It also prevents new tasks from being added to the pool.
         """
-        self.tasks.join()
+        if self.is_active == False:
+            return
+        
+        self.task_event.set()
         self.is_active = False
-        for _ in range(self.num_threads):
-            self.tasks.put(None)
+
         for thread in self.threads:
             thread.join()
 
 
-def parallel_cartesian_sum(sets: List[Set[int]]):
-    """
-    Computes the sum of the Cartesian product of multiple sets of integers in parallel.
 
-    Arguments:
-        sets (list of list of int): A list of sets of integers for which the Cartesian product and sum need to be computed.
-
-    Returns:
-        int: The sum of all elements in the Cartesian product of the input sets.
-    """
-    with ThreadPoolExecutor() as executor:
-        cartesian_product = list(product(*sets))
-        result = executor.submit(sum, (sum(t) for t in cartesian_product))
-        return result.result()
