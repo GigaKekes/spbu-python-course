@@ -1,0 +1,56 @@
+@startuml game
+
+' Metaclass BotMeta
+class BotMeta {
+    +{static} add_strategy(name: str, strategy_func: Callable)
+    ---
+    strategies: dict
+}
+
+' Bot class with BotMeta as metaclass
+class Bot {
+    +name: str
+    +balance: int
+    +strategy: Callable
+    ---
+    +__init__(name: str, strategy_name: str, balance: int = 100)
+    +get_strategy(strategy_name: str): Callable
+    +place_bet(): (int, dict)
+    +receive_winnings(amount: int)
+}
+
+Bot -up-|> BotMeta
+
+' Metaclass GameMeta
+class GameMeta {
+    ---
+    max_rounds: int
+}
+
+' RouletteGame class with GameMeta as metaclass
+class RouletteGame {
+    +bots: list[Bot]
+    +rounds_played: int
+    +roulette_wheel: RouletteWheel
+    +num_rounds: int
+    ---
+    +__init__(bots: list[Bot], num_rounds: int)
+    +play_round()
+    +play_game()
+}
+
+RouletteGame -up-|> GameMeta
+
+' RouletteWheel class
+class RouletteWheel {
+    +number_data: dict
+    ---
+    +__init__()
+    +spin(): dict
+}
+
+' Relationships
+RouletteGame "1" *-- "1" RouletteWheel : composition
+RouletteGame "1" o-- "0..*" Bot : association
+
+@enduml

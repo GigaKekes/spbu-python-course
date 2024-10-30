@@ -1,0 +1,155 @@
+Round 1 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 2, 'half': 1, 'number': 7}
+Vasya placed 10 on 10 (number)
+Vasya lost his bet of 10. Balance: 90
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 90
+Misha placed 10 on Black (color)
+Misha lost his bet of 10. Balance: 90
+Dmitry placed 100 on Black (color)
+Dmitry lost his bet of 100. Balance: 0
+Dmitry has been kicked from the game due to insufficient balance.
+
+Round 2 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 3}
+Vasya placed 10 on 2 (number)
+Vasya lost his bet of 10. Balance: 80
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 80
+Misha placed 10 on Red (color)
+Misha won 20! Balance: 100
+
+Round 3 begins
+Outcome: {'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 2, 'half': 1, 'number': 4}
+Vasya placed 10 on 36 (number)
+Vasya lost his bet of 10. Balance: 70
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 90
+Misha placed 10 on Green (color)
+Misha lost his bet of 10. Balance: 90
+
+Round 4 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 3}
+Vasya placed 10 on 21 (number)
+Vasya lost his bet of 10. Balance: 60
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 100
+Misha placed 10 on Black (color)
+Misha lost his bet of 10. Balance: 80
+
+Round 5 begins
+Outcome: {'color': 'Red', 'parity': 'Even', 'third': 3, 'row': 1, 'half': 2, 'number': 36}
+Vasya placed 10 on 16 (number)
+Vasya lost his bet of 10. Balance: 50
+Kolya placed 10 on Odd (parity)
+Kolya lost his bet of 10. Balance: 90
+Misha placed 10 on Black (color)
+Misha lost his bet of 10. Balance: 70
+
+Round 6 begins
+Outcome: {'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 2, 'half': 1, 'number': 4}
+Vasya placed 10 on 21 (number)
+Vasya lost his bet of 10. Balance: 40
+Kolya placed 10 on Odd (parity)
+Kolya lost his bet of 10. Balance: 80
+Misha placed 10 on Red (color)
+Misha lost his bet of 10. Balance: 60
+
+Round 7 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 9}
+Vasya placed 10 on 19 (number)
+Vasya lost his bet of 10. Balance: 30
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 90
+Misha placed 10 on Green (color)
+Misha lost his bet of 10. Balance: 50
+
+Round 8 begins
+Outcome: {'color': 'Black', 'parity': 'Odd', 'third': 3, 'row': 3, 'half': 2, 'number': 29}
+Vasya placed 10 on 11 (number)
+Vasya lost his bet of 10. Balance: 20
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 80
+Misha placed 10 on Black (color)
+Misha won 20! Balance: 60
+
+Round 9 begins
+Outcome: {'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 3, 'half': 1, 'number': 8}
+Vasya placed 10 on 20 (number)
+Vasya lost his bet of 10. Balance: 10
+Kolya placed 10 on Odd (parity)
+Kolya lost his bet of 10. Balance: 70
+Misha placed 10 on Red (color)
+Misha lost his bet of 10. Balance: 50
+
+Round 10 begins
+Outcome: {'color': 'Black', 'parity': 'Odd', 'third': 2, 'row': 3, 'half': 1, 'number': 17}
+Vasya placed 10 on 13 (number)
+Vasya lost his bet of 10. Balance: 0
+Vasya has been kicked from the game due to insufficient balance.
+Misha placed 10 on Black (color)
+Misha won 20! Balance: 60
+
+Round 11 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 9}
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 60
+Misha placed 10 on Black (color)
+Misha lost his bet of 10. Balance: 50
+
+Round 12 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 2, 'row': 2, 'half': 2, 'number': 19}
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 70
+Misha placed 10 on Green (color)
+Misha lost his bet of 10. Balance: 40
+
+Round 13 begins
+Outcome: {'color': 'Red', 'parity': 'Even', 'third': 2, 'row': 3, 'half': 1, 'number': 14}
+Kolya placed 10 on Odd (parity)
+Kolya lost his bet of 10. Balance: 60
+Misha placed 10 on Black (color)
+Misha lost his bet of 10. Balance: 30
+
+Round 14 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 2, 'row': 1, 'half': 2, 'number': 21}
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 50
+Misha placed 10 on Green (color)
+Misha lost his bet of 10. Balance: 20
+
+Round 15 begins
+Outcome: {'color': 'Black', 'parity': 'Even', 'third': 3, 'row': 3, 'half': 2, 'number': 26}
+Kolya placed 10 on Odd (parity)
+Kolya lost his bet of 10. Balance: 40
+Misha placed 10 on Red (color)
+Misha lost his bet of 10. Balance: 10
+
+Round 16 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 2, 'half': 1, 'number': 1}
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 50
+Misha placed 10 on Green (color)
+Misha lost his bet of 10. Balance: 0
+Misha has been kicked from the game due to insufficient balance.
+
+Round 17 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 9}
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 40
+
+Round 18 begins
+Outcome: {'color': 'Black', 'parity': 'Odd', 'third': 3, 'row': 1, 'half': 2, 'number': 33}
+Kolya placed 10 on Even (parity)
+Kolya lost his bet of 10. Balance: 30
+
+Round 19 begins
+Outcome: {'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 3, 'half': 1, 'number': 2}
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 40
+
+Round 20 begins
+Outcome: {'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1, 'number': 3}
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 50
+The game is over. A maximum number of rounds has been reached
