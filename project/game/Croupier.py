@@ -1,5 +1,6 @@
 from project.game.RouletteWheel import RouletteWheel
-from typing import List
+from project.game.Bot import Bot
+from typing import List, Optional
 
 
 class GameMeta(type):
@@ -25,26 +26,29 @@ class Croupier(metaclass=GameMeta):
 
     max_rounds: int
 
-    def __init__(self, bots: List) -> None:
+    def __init__(
+        self, bots: List[Bot], wheel: Optional["RouletteWheel"] = None
+    ) -> None:
         """
         Initializes the croupier with a list of bots.
 
         Parameters:
             bots (List[Bot]): A list of bots participating in the game.
+            wheel ('RouletteWheel' | None): RouletteWheel that will be used. None if standart wheel.
         """
-        self.bots = bots
+        self.__bots = bots
+        self.__roulette_wheel = RouletteWheel() if wheel is None else wheel
         self.rounds_played = 0
-        self.roulette_wheel = RouletteWheel()
 
     def play_round(self) -> None:
         """
         Plays a single round of the game, spinning the roulette wheel and processing bets from each bot.
         """
         print(f"\nRound {self.rounds_played} begins")
-        outcome = self.roulette_wheel.spin()
+        outcome = self.__roulette_wheel.spin()
         print(f"Outcome: {outcome}")
 
-        for bot in self.bots:
+        for bot in self.__bots:
             bet_amount, dict_bet = bot.place_bet()
             print(
                 f"{bot.name} placed {bet_amount} on {dict_bet['choice']} ({dict_bet['type']})"
@@ -71,7 +75,7 @@ class Croupier(metaclass=GameMeta):
                 print(
                     f"{bot.name} has been kicked from the game due to insufficient balance."
                 )
-                self.bots.remove(bot)
+                self.__bots.remove(bot)
 
     def play_game(self) -> None:
         """
@@ -81,8 +85,17 @@ class Croupier(metaclass=GameMeta):
         for _ in range(Croupier.max_rounds):
             self.rounds_played += 1
             self.play_round()
-            if len(self.bots) == 0:
+            if len(self.__bots) == 0:
                 print("The game is over. All players lost their balances.")
                 return
 
         print("The game is over. A maximum number of rounds has been reached.")
+
+    def get_bots(self) -> List[Bot]:
+        """
+        Returns the list of Bots that are still in the game
+
+        Returns:
+            List[Bot]: the list of Bots
+        """
+        return self.__bots

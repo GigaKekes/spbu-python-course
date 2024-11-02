@@ -51,14 +51,14 @@ def losing_outcome():
 def croupier_with_winning_bot(winning_outcome):
     bot = TestBot(name="WinningBot")
     roulette = TestRouletteWheel(outcome=winning_outcome)
-    return Croupier(bots=[bot]), bot, roulette
+    return Croupier(bots=[bot], wheel=roulette), bot, roulette
 
 
 @pytest.fixture
 def croupier_with_losing_bot(losing_outcome):
     bot = TestBot(name="LosingBot")
     roulette = TestRouletteWheel(outcome=losing_outcome)
-    return Croupier(bots=[bot]), bot, roulette
+    return Croupier(bots=[bot], wheel=roulette), bot, roulette
 
 
 def test_play_round_winning_bet(croupier_with_winning_bot):
@@ -87,7 +87,7 @@ def test_bot_removed_when_balance_zero(losing_outcome):
     croupier.roulette_wheel = roulette
 
     croupier.play_round()
-    assert bot not in croupier.bots
+    assert bot not in croupier.get_bots()
 
 
 def test_game_ends_when_all_bots_are_out(losing_outcome):

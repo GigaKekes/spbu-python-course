@@ -1,6 +1,6 @@
 import random
-from project.game.Bot import Bot, CrazyBot
-from project.game.Croupier import Croupier
+from ..Bot import Bot, CrazyBot
+from ..Croupier import Croupier
 
 if __name__ == "__main__":
 

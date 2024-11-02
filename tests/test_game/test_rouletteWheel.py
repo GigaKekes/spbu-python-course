@@ -1,5 +1,5 @@
 import pytest
-from project.game.RouletteWheel import RouletteWheel
+from project.game.RouletteWheel import RouletteWheel, RouletteNumber
 
 
 @pytest.fixture
@@ -9,18 +9,19 @@ def roulette():
 
 def test_initialization(roulette):
     for number, data in roulette.number_data.items():
+        assert isinstance(data, RouletteNumber)
         if number == 0:
-            assert data["color"] == "Green"
-            assert data["parity"] is None
-            assert data["third"] is None
-            assert data["row"] is None
-            assert data["half"] is None
+            assert data.color == "Green"
+            assert data.parity is None
+            assert data.third is None
+            assert data.row is None
+            assert data.half is None
         else:
-            assert data["color"] in ["Red", "Black"]
-            assert data["parity"] in ["Even", "Odd"]
-            assert data["third"] in [1, 2, 3]
-            assert data["row"] in [1, 2, 3]
-            assert data["half"] in [1, 2]
+            assert data.color in ["Red", "Black"]
+            assert data.parity in ["Even", "Odd"]
+            assert data.third in [1, 2, 3]
+            assert data.row in [1, 2, 3]
+            assert data.half in [1, 2]
 
 
 def test_spin_returns_valid_structure(roulette):
@@ -45,16 +46,16 @@ def test_spin_consistency_with_data(roulette):
         result = roulette.spin()
         number = result["number"]
         expected_data = roulette.number_data[number]
-        assert result["color"] == expected_data["color"]
-        assert result["parity"] == expected_data["parity"]
-        assert result["third"] == expected_data["third"]
-        assert result["row"] == expected_data["row"]
-        assert result["half"] == expected_data["half"]
+        assert result["color"] == expected_data.color
+        assert result["parity"] == expected_data.parity
+        assert result["third"] == expected_data.third
+        assert result["row"] == expected_data.row
+        assert result["half"] == expected_data.half
 
 
 def test_correct_color_representation(roulette):
     for i in range(37):
-        color = roulette.number_data[i]["color"]
+        color = roulette.number_data[i].color
         if i == 0:
             assert color == "Green"
         elif ((1 <= i <= 10 or 19 <= i <= 28) and i % 2 == 0) or (
@@ -67,7 +68,7 @@ def test_correct_color_representation(roulette):
 
 def test_correct_parity_representation(roulette):
     for i in range(37):
-        parity = roulette.number_data[i]["parity"]
+        parity = roulette.number_data[i].parity
         if i == 0:
             assert parity is None
         elif i % 2 == 0:
@@ -78,7 +79,7 @@ def test_correct_parity_representation(roulette):
 
 def test_correct_third_representation(roulette):
     for i in range(37):
-        third = roulette.number_data[i]["third"]
+        third = roulette.number_data[i].third
         if i == 0:
             assert third is None
         elif i <= 12:
@@ -91,7 +92,7 @@ def test_correct_third_representation(roulette):
 
 def test_correct_row_representation(roulette):
     for i in range(37):
-        row = roulette.number_data[i]["row"]
+        row = roulette.number_data[i].row
         if i == 0:
             assert row is None
         elif i % 3 == 0:
@@ -104,7 +105,7 @@ def test_correct_row_representation(roulette):
 
 def test_correct_half_representation(roulette):
     for i in range(37):
-        half = roulette.number_data[i]["half"]
+        half = roulette.number_data[i].half
         if i == 0:
             assert half is None
         elif i <= 18:

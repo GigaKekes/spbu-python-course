@@ -35,7 +35,7 @@ def test_meta_strategies(bot):
 def test_bot_initialization(bot):
     assert bot.name == "TestBot"
     assert bot.balance == 100
-    assert bot.strategy == random_strategy
+    assert bot._strategy == random_strategy
 
 
 def test_invalid_strategy():

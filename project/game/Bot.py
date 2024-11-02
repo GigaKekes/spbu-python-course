@@ -1,5 +1,15 @@
 import random
-from typing import Callable, Dict, Tuple
+from typing import Callable, Dict, Tuple, TypedDict
+
+
+class BetDict(TypedDict):
+    """
+    Typing entity representing the betting dictionary of strucure
+    {'type' : int, 'choice' : int | str}
+    """
+
+    type: str
+    choice: int | str
 
 
 class BotMeta(type):
@@ -8,20 +18,18 @@ class BotMeta(type):
     Each strategy is a callable that defines betting rules.
     """
 
-    strategies: Dict[str, Callable[[], Dict[str, int | str]]] = {}
+    strategies: Dict[str, Callable[[], BetDict]] = {}
 
     def __new__(cls, name: str, bases: tuple, namespace: dict):
         return super().__new__(cls, name, bases, namespace)
 
-    def add_strategy(
-        cls, name: str, strategy_func: Callable[[], Dict[str, int | str]]
-    ) -> None:
+    def add_strategy(cls, name: str, strategy_func: Callable[[], BetDict]) -> None:
         """
         Adds a new strategy to the Bot class.
 
         Parameters:
             name (str): The name of the strategy.
-            strategy_func (Callable[[], Dict[str, str]]): The strategy function.
+            strategy_func (Callable[[], BetDict]): The strategy function.
         """
         cls.strategies[name] = strategy_func
 
@@ -33,10 +41,10 @@ class Bot(metaclass=BotMeta):
     Attributes:
         name (str): The name of the bot.
         balance (int): The current balance of the bot.
-        strategy (Callable[[], Dict[str, str | int]]): The betting strategy function.
+        strategy (Callable[[], BetDict): The betting strategy function.
     """
 
-    strategies: Dict[str, Callable[[], Dict[str, str | int]]]
+    strategies: Dict[str, Callable[[], BetDict]]
 
     def __init__(self, name: str, strategy_name: str, balance: int = 100):
         """
@@ -49,9 +57,9 @@ class Bot(metaclass=BotMeta):
         """
         self.name = name
         self.balance = balance
-        self.strategy = self.get_strategy(strategy_name)
+        self._strategy = self.get_strategy(strategy_name)
 
-    def get_strategy(self, strategy_name: str) -> Callable[[], Dict[str, str | int]]:
+    def get_strategy(self, strategy_name: str) -> Callable[[], BetDict]:
         """
         Retrieves a betting strategy by name.
 
@@ -77,7 +85,7 @@ class Bot(metaclass=BotMeta):
         """
         return min(10, self.balance)
 
-    def place_bet(self) -> Tuple[int, Dict[str, str | int]]:
+    def place_bet(self) -> Tuple[int, BetDict]:
         """
         Places a bet using the selected strategy, deducting the amount from the bot's balance.
 
@@ -86,7 +94,7 @@ class Bot(metaclass=BotMeta):
         """
         amount = self.consider_bet_amount()
         self.balance -= amount
-        return amount, self.strategy()
+        return amount, self._strategy()
 
     def receive_winnings(self, amount: int) -> None:
         """

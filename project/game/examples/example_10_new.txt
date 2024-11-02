@@ -1,0 +1,101 @@
+Round 1 begins
+Outcome: {'number': 3, 'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1}
+Vasya placed 10 on 32 (number)
+Vasya lost their bet of 10. Balance: 90
+Kolya placed 10 on Even (parity)
+Kolya lost their bet of 10. Balance: 90
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 90
+Dmitry placed 100 on Red (color)
+Dmitry won 200! Balance: 200
+
+Round 2 begins
+Outcome: {'number': 30, 'color': 'Red', 'parity': 'Even', 'third': 3, 'row': 1, 'half': 2}
+Vasya placed 10 on 30 (number)
+Vasya won 350! Balance: 430
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 100
+Misha placed 10 on Red (color)
+Misha won 20! Balance: 100
+Dmitry placed 200 on Red (color)
+Dmitry won 400! Balance: 400
+
+Round 3 begins
+Outcome: {'number': 29, 'color': 'Black', 'parity': 'Odd', 'third': 3, 'row': 2, 'half': 2}
+Vasya placed 10 on 5 (number)
+Vasya lost their bet of 10. Balance: 420
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 110
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 90
+Dmitry placed 400 on Black (color)
+Dmitry won 800! Balance: 800
+
+Round 4 begins
+Outcome: {'number': 17, 'color': 'Black', 'parity': 'Odd', 'third': 2, 'row': 2, 'half': 1}
+Vasya placed 10 on 13 (number)
+Vasya lost their bet of 10. Balance: 410
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 120
+Misha placed 10 on Red (color)
+Misha lost their bet of 10. Balance: 80
+Dmitry placed 800 on Black (color)
+Dmitry won 1600! Balance: 1600
+
+Round 5 begins
+Outcome: {'number': 7, 'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 3, 'half': 1}
+Vasya placed 10 on 33 (number)
+Vasya lost their bet of 10. Balance: 400
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 130
+Misha placed 10 on Red (color)
+Misha won 20! Balance: 90
+Dmitry placed 1600 on Black (color)
+Dmitry lost their bet of 1600. Balance: 0
+Dmitry has been kicked from the game due to insufficient balance.
+
+Round 6 begins
+Outcome: {'number': 24, 'color': 'Black', 'parity': 'Even', 'third': 2, 'row': 1, 'half': 2}
+Vasya placed 10 on 7 (number)
+Vasya lost their bet of 10. Balance: 390
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 140
+Misha placed 10 on Red (color)
+Misha lost their bet of 10. Balance: 80
+
+Round 7 begins
+Outcome: {'number': 16, 'color': 'Red', 'parity': 'Even', 'third': 2, 'row': 3, 'half': 1}
+Vasya placed 10 on 0 (number)
+Vasya lost their bet of 10. Balance: 380
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 150
+Misha placed 10 on Black (color)
+Misha lost their bet of 10. Balance: 70
+
+Round 8 begins
+Outcome: {'number': 27, 'color': 'Red', 'parity': 'Odd', 'third': 3, 'row': 1, 'half': 2}
+Vasya placed 10 on 31 (number)
+Vasya lost their bet of 10. Balance: 370
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 160
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 60
+
+Round 9 begins
+Outcome: {'number': 13, 'color': 'Black', 'parity': 'Odd', 'third': 2, 'row': 3, 'half': 1}
+Vasya placed 10 on 20 (number)
+Vasya lost their bet of 10. Balance: 360
+Kolya placed 10 on Even (parity)
+Kolya lost their bet of 10. Balance: 150
+Misha placed 10 on Black (color)
+Misha won 20! Balance: 70
+
+Round 10 begins
+Outcome: {'number': 35, 'color': 'Black', 'parity': 'Odd', 'third': 3, 'row': 2, 'half': 2}
+Vasya placed 10 on 14 (number)
+Vasya lost their bet of 10. Balance: 350
+Kolya placed 10 on Even (parity)
+Kolya lost their bet of 10. Balance: 140
+Misha placed 10 on Red (color)
+Misha lost their bet of 10. Balance: 60
+The game is over. A maximum number of rounds has been reached.
