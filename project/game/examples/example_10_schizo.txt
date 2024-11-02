@@ -1,0 +1,114 @@
+Round 1 begins
+Outcome: {'number': 12, 'color': 'Red', 'parity': 'Even', 'third': 1, 'row': 1, 'half': 1}
+Vasya placed 10 on 5 (number)
+Vasya lost their bet of 10. Balance: 90
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 110
+Misha placed 10 on Black (color)
+Misha lost their bet of 10. Balance: 90
+Oleg placed 10 on 1 (half)
+Oleg won 20! Balance: 110
+Dmitry placed 100 on Red (color)
+Dmitry won 200! Balance: 200
+
+Round 2 begins
+Outcome: {'number': 35, 'color': 'Black', 'parity': 'Odd', 'third': 3, 'row': 2, 'half': 2}
+Vasya placed 10 on 4 (number)
+Vasya lost their bet of 10. Balance: 80
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 120
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 80
+Oleg placed 10 on 3 (third)
+Oleg won 30! Balance: 130
+Dmitry placed 200 on Red (color)
+Dmitry lost their bet of 200. Balance: 0
+Dmitry has been kicked from the game due to insufficient balance.
+
+Round 3 begins
+Outcome: {'number': 32, 'color': 'Red', 'parity': 'Even', 'third': 3, 'row': 2, 'half': 2}
+Vasya placed 10 on 10 (number)
+Vasya lost their bet of 10. Balance: 70
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 130
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 70
+Oleg placed 10 on 1 (row)
+Oleg lost their bet of 10. Balance: 120
+
+Round 4 begins
+Outcome: {'number': 0, 'color': 'Green', 'parity': None, 'third': None, 'row': None, 'half': None}
+Vasya placed 10 on 4 (number)
+Vasya lost their bet of 10. Balance: 60
+Kolya placed 10 on Odd (parity)
+Kolya lost their bet of 10. Balance: 120
+Misha placed 10 on Red (color)
+Misha lost their bet of 10. Balance: 60
+Oleg placed 10 on Red (color)
+Oleg lost their bet of 10. Balance: 110
+
+Round 5 begins
+Outcome: {'number': 10, 'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 3, 'half': 1}
+Vasya placed 10 on 8 (number)
+Vasya lost their bet of 10. Balance: 50
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 130
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 50
+Oleg placed 10 on 0 (number)
+Oleg lost their bet of 10. Balance: 100
+
+Round 6 begins
+Outcome: {'number': 6, 'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 1, 'half': 1}
+Vasya placed 10 on 32 (number)
+Vasya lost their bet of 10. Balance: 40
+Kolya placed 10 on Odd (parity)
+Kolya lost their bet of 10. Balance: 120
+Misha placed 10 on Red (color)
+Misha lost their bet of 10. Balance: 40
+Oleg placed 10 on 2 (row)
+Oleg lost their bet of 10. Balance: 90
+
+Round 7 begins
+Outcome: {'number': 8, 'color': 'Black', 'parity': 'Even', 'third': 1, 'row': 2, 'half': 1}
+Vasya placed 10 on 27 (number)
+Vasya lost their bet of 10. Balance: 30
+Kolya placed 10 on Even (parity)
+Kolya won 20! Balance: 130
+Misha placed 10 on Black (color)
+Misha won 20! Balance: 50
+Oleg placed 10 on 2 (row)
+Oleg won 30! Balance: 110
+
+Round 8 begins
+Outcome: {'number': 3, 'color': 'Red', 'parity': 'Odd', 'third': 1, 'row': 1, 'half': 1}
+Vasya placed 10 on 12 (number)
+Vasya lost their bet of 10. Balance: 20
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 140
+Misha placed 10 on Green (color)
+Misha lost their bet of 10. Balance: 40
+Oleg placed 10 on Odd (parity)
+Oleg won 20! Balance: 120
+
+Round 9 begins
+Outcome: {'number': 15, 'color': 'Black', 'parity': 'Odd', 'third': 2, 'row': 1, 'half': 1}
+Vasya placed 10 on 24 (number)
+Vasya lost their bet of 10. Balance: 10
+Kolya placed 10 on Odd (parity)
+Kolya won 20! Balance: 150
+Misha placed 10 on Black (color)
+Misha won 20! Balance: 50
+Oleg placed 10 on Even (parity)
+Oleg lost their bet of 10. Balance: 110
+
+Round 10 begins
+Outcome: {'number': 19, 'color': 'Red', 'parity': 'Odd', 'third': 2, 'row': 3, 'half': 2}
+Vasya placed 10 on 2 (number)
+Vasya lost their bet of 10. Balance: 0
+Vasya has been kicked from the game due to insufficient balance.
+Misha placed 10 on Red (color)
+Misha won 20! Balance: 60
+Oleg placed 10 on 3 (row)
+Oleg won 30! Balance: 130
+The game is over. A maximum number of rounds has been reached.
