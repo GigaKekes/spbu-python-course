@@ -34,7 +34,7 @@ def test_meta_strategies(bot):
 
 def test_bot_initialization(bot):
     assert bot.name == "TestBot"
-    assert bot.balance == 100
+    assert bot.get_balance() == 100
     assert bot._strategy == random_strategy
 
 
@@ -48,26 +48,26 @@ def test_consider_bet_amount(bot):
 
 
 def test_crazy_bot_consider_bet_amount(crazy_bot):
-    assert crazy_bot.consider_bet_amount() == crazy_bot.balance
+    assert crazy_bot.consider_bet_amount() == crazy_bot.get_balance()
 
 
 def test_place_bet(bot):
-    initial_balance = bot.balance
+    initial_balance = bot.get_balance()
     amount, bet = bot.place_bet()
     assert amount == 10
-    assert bot.balance == initial_balance - amount
+    assert bot.get_balance() == initial_balance - amount
 
 
 def test_place_bet_with_low_balance():
     bot = Bot(name="LowBalanceBot", strategy_name="random", balance=5)
     amount, _ = bot.place_bet()
     assert amount == 5
-    assert bot.balance == 0
+    assert bot.get_balance() == 0
 
 
 def test_receive_winnings(bot):
     bot.receive_winnings(50)
-    assert bot.balance == 150
+    assert bot.get_balance() == 150
 
 
 def test_receive_winnings_negative_amount(bot):

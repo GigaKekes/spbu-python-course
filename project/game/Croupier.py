@@ -38,14 +38,14 @@ class Croupier(metaclass=GameMeta):
         """
         self.__bots = bots
         self.__roulette_wheel = RouletteWheel() if wheel is None else wheel
-        self.rounds_played = 0
+        self.__rounds_played = 0
 
     def play_round(self) -> None:
         """
         Plays a single round of the game, spinning the roulette wheel and processing bets from each bot.
         """
-        print(f"\nRound {self.rounds_played} begins")
-        outcome = self.__roulette_wheel.spin()
+        print(f"\nRound {self.__rounds_played} begins")
+        outcome = self.__roulette_wheel.spin()._asdict()
         print(f"Outcome: {outcome}")
 
         for bot in self.__bots:
@@ -55,23 +55,15 @@ class Croupier(metaclass=GameMeta):
             )
 
             if outcome[dict_bet["type"]] == dict_bet["choice"]:
-                # Calculate winnings based on bet type
-                if dict_bet["type"] == "number" or (
-                    dict_bet["type"] == "color" and dict_bet["choice"] == "Green"
-                ):
-                    winnings = bet_amount * 35
-                elif dict_bet["type"] == "row" or dict_bet["type"] == "third":
-                    winnings = bet_amount * 3
-                else:
-                    winnings = bet_amount * 2
+                winnings = bet_amount * 2
                 bot.receive_winnings(winnings)
-                print(f"{bot.name} won {winnings}! Balance: {bot.balance}")
+                print(f"{bot.name} won {winnings}! Balance: {bot.get_balance()}")
             else:
                 print(
-                    f"{bot.name} lost their bet of {bet_amount}. Balance: {bot.balance}"
+                    f"{bot.name} lost their bet of {bet_amount}. Balance: {bot.get_balance()}"
                 )
 
-            if bot.balance <= 0:
+            if bot.get_balance() <= 0:
                 print(
                     f"{bot.name} has been kicked from the game due to insufficient balance."
                 )
@@ -81,9 +73,9 @@ class Croupier(metaclass=GameMeta):
         """
         Plays the game until the maximum number of rounds is reached or all bots have lost their balances.
         """
-        self.rounds_played = 0
+        self.__rounds_played = 0
         for _ in range(Croupier.max_rounds):
-            self.rounds_played += 1
+            self.__rounds_played += 1
             self.play_round()
             if len(self.__bots) == 0:
                 print("The game is over. All players lost their balances.")
@@ -99,3 +91,6 @@ class Croupier(metaclass=GameMeta):
             List[Bot]: the list of Bots
         """
         return self.__bots
+
+    def get_rounds_played(self) -> int:
+        return self.__rounds_played

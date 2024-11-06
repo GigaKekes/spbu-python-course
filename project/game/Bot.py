@@ -40,7 +40,7 @@ class Bot(metaclass=BotMeta):
 
     Attributes:
         name (str): The name of the bot.
-        balance (int): The current balance of the bot.
+        _balance (int): The current balance of the bot.
         strategy (Callable[[], BetDict): The betting strategy function.
     """
 
@@ -53,10 +53,10 @@ class Bot(metaclass=BotMeta):
         Parameters:
             name (str): The name of the bot.
             strategy_name (str): The name of the strategy to be used.
-            balance (int): The starting balance for the bot (default is 100).
+            _balance (int): The starting balance for the bot (default is 100).
         """
         self.name = name
-        self.balance = balance
+        self._balance = balance
         self._strategy = self.get_strategy(strategy_name)
 
     def get_strategy(self, strategy_name: str) -> Callable[[], BetDict]:
@@ -83,7 +83,7 @@ class Bot(metaclass=BotMeta):
         Returns:
             int: The amount to bet (minimum of 10 or the current balance).
         """
-        return min(10, self.balance)
+        return min(10, self._balance)
 
     def place_bet(self) -> Tuple[int, BetDict]:
         """
@@ -93,7 +93,7 @@ class Bot(metaclass=BotMeta):
             Tuple[int, Dict[str, str | int]]: The bet amount and the bet details.
         """
         amount = self.consider_bet_amount()
-        self.balance -= amount
+        self._balance -= amount
         return amount, self._strategy()
 
     def receive_winnings(self, amount: int) -> None:
@@ -108,7 +108,10 @@ class Bot(metaclass=BotMeta):
         """
         if amount < 0:
             raise ValueError("Amount received after winning shouldn't be negative")
-        self.balance += amount
+        self._balance += amount
+
+    def get_balance(self) -> int:
+        return self._balance
 
 
 class CrazyBot(Bot):
@@ -123,4 +126,4 @@ class CrazyBot(Bot):
         Returns:
             int: The bot's entire balance.
         """
-        return self.balance
+        return self._balance

@@ -1,6 +1,7 @@
 import random
 from dataclasses import dataclass
-from typing import Optional, Dict, Any
+from collections import namedtuple
+from typing import Optional, Dict, Any, NamedTuple
 
 
 @dataclass
@@ -23,6 +24,26 @@ class RouletteNumber:
     third: int | None
     row: int | None
     half: int | None
+
+
+class SpinResult(NamedTuple):
+    """
+    Represents the result of a roulette spin with detailed properties.
+    Attributes:
+        number (int): The number on the roulette wheel (0-36).
+        color (str): The color of the number, either "Green", "Red", or "Black".
+        parity (Optional[str]): Whether the number is "Even" or "Odd"; None if 0.
+        third (Optional[int]): Indicates which third of the wheel the number belongs to (1, 2, or 3); None if 0.
+        row (Optional[int]): The row in which the number is located (1, 2, or 3); None if 0.
+        half (Optional[int]): Which half of the numbers the number belongs to (1 for 1-18, 2 for 19-36); None if 0.
+    """
+
+    number: int
+    color: str
+    parity: Optional[str]
+    third: Optional[int]
+    row: Optional[int]
+    half: Optional[int]
 
 
 class RouletteWheel:
@@ -58,7 +79,7 @@ class RouletteWheel:
             for i in range(37)
         }
 
-    def spin(self) -> Dict[str, str | int | None]:
+    def spin(self) -> SpinResult:
         """
         Simulates spinning the roulette wheel by selecting a random number (0-36) and returning its properties.
 
@@ -73,11 +94,11 @@ class RouletteWheel:
         """
         number = random.choice(list(range(37)))
         result = self.number_data[number]
-        return {
-            "number": result.number,
-            "color": result.color,
-            "parity": result.parity,
-            "third": result.third,
-            "row": result.row,
-            "half": result.half,
-        }
+        return SpinResult(
+            number=result.number,
+            color=result.color,
+            parity=result.parity,
+            third=result.third,
+            row=result.row,
+            half=result.half,
+        )

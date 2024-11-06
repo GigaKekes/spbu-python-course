@@ -25,7 +25,7 @@ def test_initialization(roulette):
 
 
 def test_spin_returns_valid_structure(roulette):
-    result = roulette.spin()
+    result = roulette.spin()._asdict()
     assert "number" in result
     assert "color" in result
     assert "parity" in result
@@ -43,7 +43,7 @@ def test_spin_returns_valid_structure(roulette):
 
 def test_spin_consistency_with_data(roulette):
     for _ in range(10):
-        result = roulette.spin()
+        result = roulette.spin()._asdict()
         number = result["number"]
         expected_data = roulette.number_data[number]
         assert result["color"] == expected_data.color

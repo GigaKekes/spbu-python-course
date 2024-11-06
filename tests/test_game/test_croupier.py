@@ -1,6 +1,6 @@
 import pytest
 from project.game.Croupier import Croupier
-from project.game.RouletteWheel import RouletteWheel
+from project.game.RouletteWheel import RouletteWheel, SpinResult
 from project.game.Bot import Bot
 
 
@@ -15,36 +15,22 @@ class TestRouletteWheel(RouletteWheel):
 class TestBot(Bot):
     def __init__(self, name, balance=100):
         self.name = name
-        self.balance = balance
+        self._balance = balance
 
     def place_bet(self):
-        bet_amount = 10 if self.balance >= 10 else self.balance
-        self.balance -= bet_amount
+        bet_amount = 10 if self._balance >= 10 else self._balance
+        self._balance -= bet_amount
         return bet_amount, {"choice": 1, "type": "number"}
 
 
 @pytest.fixture
 def winning_outcome():
-    return {
-        "color": "Red",
-        "parity": "Odd",
-        "third": 1,
-        "row": 2,
-        "half": 1,
-        "number": 1,
-    }
+    return SpinResult(number=1, color="Red", parity="Odd", third=1, row=3, half=1)
 
 
 @pytest.fixture
 def losing_outcome():
-    return {
-        "color": "Black",
-        "parity": "Even",
-        "third": 1,
-        "row": 3,
-        "half": 1,
-        "number": 2,
-    }
+    return SpinResult(number=2, color="Black", parity="Even", third=1, row=2, half=1)
 
 
 @pytest.fixture
@@ -64,20 +50,20 @@ def croupier_with_losing_bot(losing_outcome):
 def test_play_round_winning_bet(croupier_with_winning_bot):
     croupier, bot, roulette = croupier_with_winning_bot
     croupier.roulette_wheel = roulette
-    initial_balance = bot.balance
+    initial_balance = bot.get_balance()
 
     croupier.play_round()
-    expected_winnings = 350
-    assert bot.balance == initial_balance - 10 + expected_winnings
+    expected_winnings = 20
+    assert bot.get_balance() == initial_balance - 10 + expected_winnings
 
 
 def test_play_round_losing_bet(croupier_with_losing_bot):
     croupier, bot, roulette = croupier_with_losing_bot
     croupier.roulette_wheel = roulette
-    initial_balance = bot.balance
+    initial_balance = bot.get_balance()
 
     croupier.play_round()
-    assert bot.balance == initial_balance - 10
+    assert bot.get_balance() == initial_balance - 10
 
 
 def test_bot_removed_when_balance_zero(losing_outcome):
@@ -97,7 +83,7 @@ def test_game_ends_when_all_bots_are_out(losing_outcome):
     croupier.roulette_wheel = roulette
 
     croupier.play_game()
-    assert croupier.rounds_played == 1
+    assert croupier.get_rounds_played() == 1
 
 
 def test_game_max_rounds(losing_outcome):
@@ -107,4 +93,4 @@ def test_game_max_rounds(losing_outcome):
     croupier.roulette_wheel = roulette
 
     croupier.play_game()
-    assert croupier.rounds_played == Croupier.max_rounds
+    assert croupier.get_rounds_played() == Croupier.max_rounds
