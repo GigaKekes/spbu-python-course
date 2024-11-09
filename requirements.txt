@@ -3,3 +3,4 @@ mypy
 numpy
 pre-commit
 pytest
+scikit-learn
