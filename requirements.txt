@@ -1,6 +1,9 @@
 black
+matplotlib
+mlxtend
 mypy
 numpy
 pre-commit
 pytest
 scikit-learn
+seaborn
